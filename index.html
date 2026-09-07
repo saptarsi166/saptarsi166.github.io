@@ -1,0 +1,510 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="cyber">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Saptarsi Banerjee — 3D Generalist, Technical Artist & Real-time WebGL Shader Developer. Hard-surface CGI, procedural FX, and game engine art.">
+  <title>VORTEX // 3D & Graphics Portfolio — Saptarsi Banerjee</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Core & Component Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Ambient Custom Cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo">
+        <span class="logo-badge">VX</span>
+        <span class="brand-name">VORTEX // 3D</span>
+        <span class="brand-title">SAPTARSI BANERJEE</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="#passes" class="nav-link">Passes</a>
+        <a href="#shader-lab" class="nav-link">Shader Lab</a>
+        <a href="#works" class="nav-link">Works</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Theme Picker -->
+        <div class="theme-picker" title="Switch Visual Theme">
+          <button type="button" class="theme-btn active" data-theme="cyber" title="Cyber Neon">
+            <span class="theme-dot"></span>
+          </button>
+          <button type="button" class="theme-btn" data-theme="gold" title="Obsidian Gold">
+            <span class="theme-dot"></span>
+          </button>
+          <button type="button" class="theme-btn" data-theme="hologram" title="Ethereal Hologram">
+            <span class="theme-dot"></span>
+          </button>
+          <button type="button" class="theme-btn" data-theme="minimal" title="Monochrome Studio">
+            <span class="theme-dot"></span>
+          </button>
+        </div>
+
+        <a href="#contact" class="btn-primary-nav">Hire / Inquire</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-row">
+            <span class="pulse-dot"></span>
+            <span class="badge-text">OPEN FOR COMMISSIONS &amp; STUDIO ROLES</span>
+          </div>
+
+          <h1 class="hero-title">
+            Crafting Next-Gen <br>
+            <span class="gradient-text">3D Realities</span> &amp; <br>
+            Real-Time Shaders
+          </h1>
+
+          <p class="hero-description">
+            Portfolio of <strong>Saptarsi Banerjee</strong> — 3D Generalist, Hard-Surface Modeler, and Technical Artist.
+            Engineering cinematic PBR assets, real-time WebGL interactive graphics, and procedural visual effects for games, films, and digital platforms.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#works" class="btn-cta-primary">
+              <span>Inspect Works</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#shader-lab" class="btn-cta-secondary">
+              <span>Interactive Shader Lab</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D Interactive Hero Viewport -->
+        <div class="hero-viewport-card" title="Click and drag to orbit 3D geometry">
+          <div id="hero-3d-canvas"></div>
+
+          <!-- HUD Top Info -->
+          <div class="viewport-hud-top">
+            <span class="hud-pill">REALTIME 3D VIEWPORT // WEBGL 2.0</span>
+            <span class="hud-pill">60.0 FPS &bull; 16.6ms</span>
+          </div>
+
+          <!-- HUD Bottom Interactive Controls -->
+          <div class="viewport-hud-bottom">
+            <!-- Geometry Selector -->
+            <div class="hud-btn-group" title="Select 3D Geometry">
+              <button type="button" class="hud-btn hud-geo-btn active" data-geo="torusKnot">Torus Knot</button>
+              <button type="button" class="hud-btn hud-geo-btn" data-geo="icosahedron">Crystal</button>
+              <button type="button" class="hud-btn hud-geo-btn" data-geo="sphere">Sphere</button>
+              <button type="button" class="hud-btn hud-geo-btn" data-geo="octahedron">Prism</button>
+            </div>
+
+            <!-- Material Mode -->
+            <div class="hud-btn-group" title="Select Shading Mode">
+              <button type="button" class="hud-btn hud-mat-btn active" data-mat="chrome">Chrome</button>
+              <button type="button" class="hud-btn hud-mat-btn" data-mat="clay">Clay</button>
+              <button type="button" class="hud-btn hud-mat-btn" data-mat="normal">Normal</button>
+              <button type="button" class="hud-btn hud-mat-btn" data-mat="hologram">Holo</button>
+            </div>
+
+            <!-- Toggles -->
+            <div class="hud-btn-group">
+              <button type="button" class="hud-btn" id="hud-wireframe-toggle" title="Toggle Wireframe">Wireframe</button>
+              <button type="button" class="hud-btn active" id="hud-rotate-toggle" title="Toggle Auto-Rotation">Auto-Spin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Signature Multi-Pass Render Comparison Slider -->
+    <section class="section comparison-section" id="passes">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">TOPOLOGY &amp; SHADING INTEGRITY</span>
+          <h2 class="section-title">Multi-Pass Render Comparison</h2>
+          <p class="section-description">
+            High-end 3D graphics require pristine geometry flow, accurate lighting, and production-ready optimization. Drag the divider to compare the beauty render against clay ambient occlusion and wireframe quad topology.
+          </p>
+        </div>
+
+        <div id="render-comparison-container" class="render-comparison-container">
+          <!-- Populated by comparison-slider.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Interactive 3D Shader & Material Lab Sandbox -->
+    <section class="section shader-lab-section" id="shader-lab">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">GPU COMPUTE &amp; GLSL EXPERIMENTS</span>
+          <h2 class="section-title">Interactive 3D Shader Lab</h2>
+          <p class="section-description">
+            Tweak real-time vertex displacement algorithms, Fresnel chromatic dispersion, and color LUT palettes running directly on your GPU.
+          </p>
+        </div>
+
+        <div class="shader-lab-layout">
+          <!-- Left: 3D Shader Canvas -->
+          <div class="sl-viewport-wrapper">
+            <div id="shader-lab-canvas"></div>
+          </div>
+
+          <!-- Right: Interactive Controls Panel -->
+          <div class="sl-controls-panel">
+            <div class="sl-panel-header">
+              <h3 class="sl-panel-title">GLSL Shader Parameters</h3>
+              <p class="sl-panel-desc">Simplex 3D Noise Vertex Displacement &bull; Fresnel Prismatic Dispersion</p>
+            </div>
+
+            <!-- Presets Row -->
+            <div class="sl-control-group">
+              <span class="sl-label">Shader Presets:</span>
+              <div class="sl-presets-row">
+                <button type="button" class="sl-preset-btn active" data-preset="cyberCore">Cyber Core</button>
+                <button type="button" class="sl-preset-btn" data-preset="quantumCrystal">Quantum Crystal</button>
+                <button type="button" class="sl-preset-btn" data-preset="wireGrid">Wire Grid</button>
+                <button type="button" class="sl-preset-btn" data-preset="moltenGold">Molten Gold</button>
+                <button type="button" class="sl-preset-btn" data-preset="abyssalBio">Abyssal Bio</button>
+              </div>
+            </div>
+
+            <!-- Frequency Slider -->
+            <div class="sl-control-group">
+              <div class="sl-label-row">
+                <span class="sl-label">Noise Frequency (Octaves):</span>
+                <span class="sl-val" id="sl-freq-val">2.2</span>
+              </div>
+              <input type="range" class="sl-slider" id="sl-freq" min="0.5" max="5.0" step="0.1" value="2.2">
+            </div>
+
+            <!-- Amplitude Slider -->
+            <div class="sl-control-group">
+              <div class="sl-label-row">
+                <span class="sl-label">Displacement Amplitude:</span>
+                <span class="sl-val" id="sl-amp-val">0.45</span>
+              </div>
+              <input type="range" class="sl-slider" id="sl-amp" min="0.0" max="1.2" step="0.05" value="0.45">
+            </div>
+
+            <!-- Speed Slider -->
+            <div class="sl-control-group">
+              <div class="sl-label-row">
+                <span class="sl-label">Turbulence Velocity:</span>
+                <span class="sl-val" id="sl-speed-val">1.0x</span>
+              </div>
+              <input type="range" class="sl-slider" id="sl-speed" min="0.2" max="3.0" step="0.1" value="1.0">
+            </div>
+
+            <!-- Palette Selection -->
+            <div class="sl-control-group">
+              <div class="sl-label-row">
+                <span class="sl-label">Chromatic Palette:</span>
+              </div>
+              <select class="sl-select" id="sl-palette">
+                <option value="cyber">Cyber Neon (Cyan &amp; Magenta)</option>
+                <option value="prismatic">Prismatic Glass (Spectral Refraction)</option>
+                <option value="deepSea">Bioluminescent Deep (Teal &amp; Violet)</option>
+                <option value="goldPlasma">Golden Plasma (Molten Amber)</option>
+              </select>
+            </div>
+
+            <!-- Wireframe & Actions -->
+            <div class="sl-presets-row" style="margin-top: 8px;">
+              <button type="button" class="sl-preset-btn" id="sl-wireframe-btn">Toggle GLSL Wireframe</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Filterable Project Gallery -->
+    <section class="section" id="works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">CURATED PORTFOLIO</span>
+          <h2 class="section-title">Selected Works &amp; Studies</h2>
+          <p class="section-description">
+            Production game assets, real-time WebGL engines, volumetric environments, and procedural simulations. Click any project to inspect full breakdown and specifications.
+          </p>
+        </div>
+
+        <!-- Filter Navigation -->
+        <div class="filter-bar">
+          <button type="button" class="filter-btn active" data-category="all">All Works</button>
+          <button type="button" class="filter-btn" data-category="3d-art">3D Art &amp; CGI</button>
+          <button type="button" class="filter-btn" data-category="environment">Environment &amp; Lighting</button>
+          <button type="button" class="filter-btn" data-category="shaders">Shaders &amp; Procedural</button>
+          <button type="button" class="filter-btn" data-category="motion">Motion Graphics</button>
+          <button type="button" class="filter-btn" data-category="webgl">Real-time &amp; WebGL</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Dynamically populated by main.js from projects-data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Technical Skills & Tools Matrix -->
+    <section class="section" id="skills" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">TECHNICAL ARSENAL</span>
+          <h2 class="section-title">Skills &amp; DCC Tooling</h2>
+          <p class="section-description">
+            Proficiency across modern 3D pipelines, real-time engines, shader programming languages, and lighting setups.
+          </p>
+        </div>
+
+        <!-- Stats Numbers -->
+        <div class="skills-stats-grid" id="skills-stats-grid">
+          <!-- Populated by main.js -->
+        </div>
+
+        <!-- Categories & Bars -->
+        <div class="skills-categories-grid" id="skills-container">
+          <!-- Populated by main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Experience & Recognition Timeline -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">CAREER &amp; HONORS</span>
+          <h2 class="section-title">Experience &amp; Milestones</h2>
+          <p class="section-description">
+            Track record delivering high-impact 3D assets, real-time engines, and visual development.
+          </p>
+        </div>
+
+        <div class="experience-timeline" id="experience-timeline">
+          <!-- Populated by main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Commission Estimator & Contact -->
+    <section class="section" id="contact" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">COLLABORATION &amp; COMMISSIONS</span>
+          <h2 class="section-title">Let's Build Something Exceptional</h2>
+          <p class="section-description">
+            Have a game asset, real-time WebGL project, cinematic render, or shader consulting need? Use the estimator or get in touch directly.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Commission Estimator Calculator -->
+          <div class="commission-calculator-card">
+            <div>
+              <h3 class="calc-title">Commission Estimator</h3>
+              <p class="calc-desc">Calculate estimated budget range and production delivery timeline.</p>
+            </div>
+
+            <div class="calc-field">
+              <label for="est-type" class="calc-label">PROJECT TYPE:</label>
+              <select id="est-type" class="calc-select">
+                <option value="hardsurface">3D Hard-Surface / Mecha Asset</option>
+                <option value="environment">Cinematic Environment (UE5 / Blender)</option>
+                <option value="shaders">Custom Procedural GLSL / HLSL Shaders</option>
+                <option value="motion">Motion Graphics &amp; Fluid Simulation</option>
+                <option value="webgl">Interactive WebGL / Three.js Experience</option>
+              </select>
+            </div>
+
+            <div class="calc-field">
+              <label for="est-scope" class="calc-label">PRODUCTION SCOPE:</label>
+              <select id="est-scope" class="calc-select">
+                <option value="asset">Hero Asset (Single Focus Model / Shader)</option>
+                <option value="scene">Complete Scene (Full Shading &amp; Lighting)</option>
+                <option value="full">Full Production Suite (Turnkey Commercial IP)</option>
+              </select>
+            </div>
+
+            <div class="calc-field">
+              <label for="est-urgency" class="calc-label">TIMELINE PRIORITY:</label>
+              <select id="est-urgency" class="calc-select">
+                <option value="normal">Standard Production Schedule</option>
+                <option value="priority">Priority Delivery (+35%)</option>
+                <option value="rush">Rush Milestone Delivery (+75%)</option>
+              </select>
+            </div>
+
+            <div class="calc-summary-box">
+              <div>
+                <span class="calc-label">EST. INVESTMENT:</span>
+                <div class="calc-metric-val" id="est-output-budget">$1,200 - $1,560 USD</div>
+              </div>
+              <div>
+                <span class="calc-label">EST. TIMELINE:</span>
+                <div class="calc-metric-val" id="est-output-timeline">2 - 3 Weeks</div>
+              </div>
+            </div>
+
+            <button type="button" class="btn-cta-secondary" id="est-apply-btn" style="justify-content: center;">
+              <span>Pre-fill Into Contact Form &rarr;</span>
+            </button>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-card">
+            <form id="portfolio-contact-form">
+              <div class="form-group">
+                <label for="contact-name" class="form-label">YOUR NAME / STUDIO:</label>
+                <input type="text" id="contact-name" class="form-input" placeholder="e.g. Elena Rostova / Neon Void Studios" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">EMAIL ADDRESS:</label>
+                <input type="email" id="contact-email" class="form-input" placeholder="e.g. elena@neonvoid.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">PROJECT BRIEF &amp; DETAILS:</label>
+                <textarea id="contact-message" class="form-textarea" placeholder="Describe your project requirements, polycount targets, software requirements, or project vision..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-cta-primary" style="width: 100%; justify-content: center;">
+                <span>Send Inquiry &amp; Dispatch Brief</span>
+              </button>
+            </form>
+
+            <div class="quick-contact-row">
+              <span style="font-size: 0.85rem; color: var(--text-secondary);">Direct Email:</span>
+              <button type="button" class="btn-copy-email" id="copy-email-btn" data-email="banerjeesaptarsi622@gmail.com">
+                <span>Copy: banerjeesaptarsi622@gmail.com</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Detailed Case Study Modal -->
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="case-study-modal" id="case-study-modal" role="dialog" aria-modal="true">
+    <div class="modal-header-bar">
+      <div class="modal-badges-row">
+        <span class="modal-badge-cat" id="modal-category">3D Art</span>
+        <span class="modal-badge-year" id="modal-year">2026</span>
+      </div>
+      <button type="button" class="btn-close-modal" id="modal-close-btn" aria-label="Close Case Study">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <div>
+        <h2 class="modal-section-title" id="modal-title" style="font-size: 1.8rem; margin-bottom: 6px;">Project Title</h2>
+        <p class="modal-text" id="modal-subtitle" style="color: var(--accent-cyan);">Project Subtitle</p>
+      </div>
+
+      <!-- Hero Preview / Passes Bar -->
+      <div class="modal-hero-wrapper">
+        <img src="" alt="" id="modal-hero-img">
+        <div class="modal-passes-bar" id="modal-passes-bar">
+          <!-- Populated if multi-pass available -->
+        </div>
+      </div>
+
+      <!-- Metadata Box -->
+      <div class="modal-meta-grid">
+        <div class="meta-box">
+          <span class="meta-box-label">Client / Purpose</span>
+          <span class="meta-box-val" id="modal-client">Client Name</span>
+        </div>
+        <div class="meta-box">
+          <span class="meta-box-label">Role &amp; Discipline</span>
+          <span class="meta-box-val" id="modal-role">Lead Artist</span>
+        </div>
+      </div>
+
+      <!-- Technical Metrics Grid -->
+      <div>
+        <h3 class="modal-section-title">Technical Specifications</h3>
+        <div class="modal-metrics-grid" id="modal-metrics-grid">
+          <!-- Populated by main.js -->
+        </div>
+      </div>
+
+      <!-- Software & Tools Used -->
+      <div>
+        <h3 class="modal-section-title">Software Pipeline</h3>
+        <div class="modal-tools-list" id="modal-tools-list">
+          <!-- Populated by main.js -->
+        </div>
+      </div>
+
+      <!-- Overview & Challenges -->
+      <div>
+        <h3 class="modal-section-title">Artistic &amp; Technical Overview</h3>
+        <p class="modal-text" id="modal-overview" style="margin-bottom: 16px;"></p>
+        <h3 class="modal-section-title">Technical Challenges &amp; Optimization</h3>
+        <p class="modal-text" id="modal-challenges"></p>
+      </div>
+
+      <!-- Breakdown Points -->
+      <div>
+        <h3 class="modal-section-title">Key Pipeline Breakdown</h3>
+        <ul class="modal-breakdown-list" id="modal-breakdown-list">
+          <!-- Populated by main.js -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="brand-logo">
+          <span class="logo-badge">VX</span>
+          <span class="brand-name">VORTEX // 3D</span>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://artstation.com" target="_blank" rel="noopener" class="footer-link">ArtStation</a>
+          <a href="https://shadertoy.com" target="_blank" rel="noopener" class="footer-link">Shadertoy</a>
+          <a href="https://github.com" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+          <a href="https://behance.net" target="_blank" rel="noopener" class="footer-link">Behance</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Saptarsi Banerjee &bull; All Rights Reserved</span>
+        <span>Built with Modern HTML5, CSS3 &amp; WebGL (Three.js)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="js/projects-data.js"></script>
+  <script src="js/three-hero.js"></script>
+  <script src="js/comparison-slider.js"></script>
+  <script src="js/shader-lab.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
