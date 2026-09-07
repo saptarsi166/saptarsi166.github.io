@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# VORTEX // 3D & Graphics Portfolio
 
 A high-performance, interactive portfolio website engineered specifically for 3D generalists, technical artists, hard-surface modelers, and real-time shader developers.
@@ -103,3 +104,6 @@ You can host this portfolio completely free on:
 - **GitHub Pages**: Push this repository to GitHub and enable Pages under Settings > Pages.
 - **Vercel**: Drag and drop the `graphics-portfolio` folder directly into Vercel dashboard.
 - **Netlify**: Drag and drop the folder into Netlify Drop for instant 0-second deployment.
+=======
+# saptarsi166.github.io
+>>>>>>> 423d840a7ba0c04bbd78e5bdb9cf098f759ea52e
